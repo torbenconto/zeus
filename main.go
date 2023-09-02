@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	input := "Hello, World! This is a simple text lexer."
+	input := `Hello, World! This is a "simple text" lexer.`
 
 	lexer := zeus_lexer.NewLexer(input)
 

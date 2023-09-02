@@ -13,5 +13,9 @@ func (l *Lexer) NextToken() Token {
 		return l.ReadWord()
 	}
 
+	if l.Input[l.Position] == '"' {
+		return l.ReadQuotation()
+	}
+
 	return l.ReadPunctuation()
 }
