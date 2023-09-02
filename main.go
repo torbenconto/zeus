@@ -2,38 +2,29 @@ package main
 
 import (
 	"fmt"
-	"strings"
 
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
 )
 
-func CountSentences(input string) int {
+func main() {
+	input := `Hello, World! This isn't a "simple text" lexer.`
+
 	lexer := zeus_lexer.NewLexer(input)
 	sentenceCount := 0
 
 	for {
 		token := lexer.NextToken()
-		fmt.Println(token)
 		if token.Type == zeus_lexer.Unknown {
 			break
 		}
 
-		if strings.ContainsAny(token.Value, ".!?") {
+		// Check if the token is a punctuation mark that typically ends a sentence.
+		if token.Type == zeus_lexer.Punctuation {
 			sentenceCount++
 		}
+
+		fmt.Printf("Type: %v, Value: %s\n", token.Type, token.Value)
 	}
 
-	return sentenceCount
-}
-
-func main() {
-	input := `
-	This is a test sentence. 
-	It contains multiple sentences! Does it really work? 
-	Yes, it does. "But how?" you might ask. 
-	Well, it handles quotes and abbreviations like Mr. and Dr. as well. 
-	And it doesn't get confused by ellipses... or multiple exclamation marks!!!
-  `
-	sentenceCount := CountSentences(input)
-	fmt.Printf("Number of sentences: %d\n", sentenceCount)
+	fmt.Printf("Total Sentences: %d\n", sentenceCount)
 }

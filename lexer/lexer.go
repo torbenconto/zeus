@@ -1,10 +1,12 @@
 package zeus_lexer
 
 const (
-	Word       = iota
-	Puntuation = iota
-	Quotation  = iota
-	Unknown    = iota
+	Word        = iota
+	Punctuation = iota
+	Quotation   = iota
+	Apostrophe  = iota
+	Comma       = iota
+	Unknown     = iota
 )
 
 type Lexer struct {

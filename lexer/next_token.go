@@ -17,5 +17,13 @@ func (l *Lexer) NextToken() Token {
 		return l.ReadQuotation()
 	}
 
+	if l.Input[l.Position] == '\'' {
+		return l.ReadApostrophe()
+	}
+
+	if l.Input[l.Position] == ',' {
+		return l.ReadComma()
+	}
+
 	return l.ReadPunctuation()
 }
