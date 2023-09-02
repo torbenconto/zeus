@@ -25,5 +25,17 @@ func (l *Lexer) NextToken() Token {
 		return l.ReadComma()
 	}
 
+	if l.Input[l.Position] == '(' {
+		return l.ReadLeftParenthesis()
+	}
+
+	if l.Input[l.Position] == ')' {
+		return l.ReadRightParenthesis()
+	}
+
+	if unicode.IsDigit(rune(l.Input[l.Position])) {
+		return l.ReadNumber()
+	}
+
 	return l.ReadPunctuation()
 }
