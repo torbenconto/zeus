@@ -4,7 +4,7 @@ const (
 	Word       = iota
 	Puntuation = iota
 	Quotation  = iota
-	Unkonwn    = iota
+	Unknown    = iota
 )
 
 type Lexer struct {
