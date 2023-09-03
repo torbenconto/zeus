@@ -16,6 +16,17 @@ func ColemanLiauIndex(in string) float64 {
 	if sentences == 0 {
 		sentences = 1
 	}
+	return (5.88 * (float64(letters) / float64(words))) - (0.296 * (float64(sentences) / float64(words))) - 15.8
+}
 
-	return (5.89 * (float64(letters) / float64(words))) - (0.3 * (float64(sentences) / float64(words))) - 15.8
+func AutomatedReadabilityIndex(in string) float64 {
+	sentences := SentenceCount(in)
+	words := WordCount(in)
+	letters := LetterCount(in)
+
+	if sentences == 0 {
+		sentences = 1
+	}
+
+	return (4.71 * (float64(letters) / float64(words))) + (0.5 * (float64(words) / float64(sentences))) - 21.43
 }
