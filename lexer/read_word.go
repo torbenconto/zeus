@@ -1,6 +1,9 @@
 package zeus_lexer
 
-import "unicode"
+import (
+	"fmt"
+	"unicode"
+)
 
 func (l *Lexer) readWord() Token {
 
@@ -8,6 +11,7 @@ func (l *Lexer) readWord() Token {
 	isAbbreviation := false
 
 	for l.Position < len(l.Input) && (unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-') {
+		fmt.Println(string(l.Input[start:l.Position]))
 		if l.Input[l.Position] == '.' && l.Position == start+1 {
 			isAbbreviation = true
 		}
