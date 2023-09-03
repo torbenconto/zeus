@@ -1,6 +1,7 @@
 package zeus_lexer
 
 import (
+	"fmt"
 	"unicode"
 )
 
@@ -17,6 +18,7 @@ func (l *Lexer) readWord() Token {
 	}
 
 	word := l.Input[start:l.Position]
+	fmt.Println(word, isAbbreviation, isUppercase(word))
 
 	if isAbbreviation && isUppercase(word) {
 		return Token{
