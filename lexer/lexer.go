@@ -9,6 +9,7 @@ const (
 	Number           = iota
 	RightParenthesis = iota
 	LeftParenthesis  = iota
+	Symbol           = iota
 	Unknown          = iota
 )
 

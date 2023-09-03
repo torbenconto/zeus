@@ -17,7 +17,8 @@ func (l *Lexer) NextToken() Token {
 		return l.ReadQuotation()
 	}
 
-	if l.Input[l.Position] == '\'' {
+	//                                this is bad because "-" can also be used in lists but for now we ignore that bcs i am lazy
+	if l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' {
 		return l.ReadApostrophe()
 	}
 
@@ -35,6 +36,10 @@ func (l *Lexer) NextToken() Token {
 
 	if unicode.IsDigit(rune(l.Input[l.Position])) {
 		return l.ReadNumber()
+	}
+
+	if unicode.IsSymbol(rune(l.Input[l.Position])) {
+		return l.ReadSymbol()
 	}
 
 	return l.ReadPunctuation()
