@@ -2,7 +2,7 @@ package zeus_lexer
 
 import "unicode"
 
-func (l *Lexer) ReadWord() Token {
+func (l *Lexer) readWord() Token {
 
 	start := l.Position
 	isAbbreviation := false
