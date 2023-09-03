@@ -1,24 +1,34 @@
 package zeus_lexer
 
 import (
-	"strings"
 	"unicode"
 )
 
 func (l *Lexer) readWord() Token {
 	start := l.Position
-	for l.Position < len(l.Input) && (unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' || l.Input[l.Position] == '.' || unicode.IsDigit(rune(l.Input[l.Position])) || l.Input[l.Position] == '_') {
+
+	for l.Position < len(l.Input) && (unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-') {
 		l.Position++
 	}
 
-	value := l.Input[start:l.Position]
-
-	if strings.Contains(value, ".") && !strings.HasPrefix(value, ".") && !strings.HasSuffix(value, ".") {
-		return Token{Type: Abbreviation, Value: value}
+	if isAbbreviation(l.Input[start:l.Position]) {
+		return Token{
+			Type:  Abbreviation,
+			Value: l.Input[start:l.Position],
+		}
 	}
 
 	return Token{
 		Type:  Word,
 		Value: l.Input[start:l.Position],
 	}
+}
+
+func isAbbreviation(word string) bool {
+	for _, char := range word {
+		if !unicode.IsUpper(char) {
+			return false
+		}
+	}
+	return true
 }
