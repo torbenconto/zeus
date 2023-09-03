@@ -18,13 +18,12 @@ func (l *Lexer) readWord() Token {
 		Checking if the word is capitalized and has a period character after it is a not very good, but good enough idea for checking if a word is an a
 	*/
 	if isAbbreviation(l.Input[start:l.Position]) {
+		fmt.Println(string(l.Input[start:l.Position]))
 		return Token{
 			Type:  Abbreviation,
 			Value: l.Input[start:l.Position],
 		}
 	}
-
-	fmt.Println(string(l.Input[start:l.Position]))
 
 	return Token{
 		Type:  Word,
