@@ -1,6 +1,10 @@
 package zeus
 
-import zeus_lexer "github.com/torbenconto/zeus/lexer"
+import (
+	"fmt"
+
+	zeus_lexer "github.com/torbenconto/zeus/lexer"
+)
 
 func LetterCount(in string) int {
 	lexer := zeus_lexer.NewLexer(in)
@@ -8,6 +12,7 @@ func LetterCount(in string) int {
 
 	for {
 		token := lexer.NextToken()
+		fmt.Println(token)
 		if token.Type == zeus_lexer.Unknown {
 			break
 		}

@@ -1,6 +1,8 @@
 package zeus_lexer
 
-import "unicode"
+import (
+	"unicode"
+)
 
 func (l *Lexer) ReadWord() Token {
 

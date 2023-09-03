@@ -1,8 +1,14 @@
 package zeus_lexer
 
-import "unicode"
+import (
+	"unicode"
+)
 
 func (l *Lexer) NextToken() Token {
+	// Janky fix for a problem i cannot figure out where it throws an error like this panic: runtime error: index out of range [19] with length 19 [recovered] if there is no punctuation of no whitespace (only sometimes though)
+	if len(l.Input) > 0 && l.Input[len(l.Input)-1] != ' ' {
+		l.Input += " "
+	}
 	l.SkipWhiteSpace()
 
 	if l.Position >= len(l.Input) {
