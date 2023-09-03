@@ -1,6 +1,7 @@
 package zeus
 
 import (
+	"fmt"
 	"strings"
 
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
@@ -14,6 +15,10 @@ func SentenceCount(in string) int {
 		token := lexer.NextToken()
 		if token.Type == zeus_lexer.Unknown {
 			break
+		}
+
+		if token.Type == zeus_lexer.Punctuation {
+			fmt.Println(token)
 		}
 
 		if token.Type == zeus_lexer.Punctuation &&
