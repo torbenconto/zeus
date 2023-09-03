@@ -5,6 +5,7 @@ import zeus_lexer "github.com/torbenconto/zeus/lexer"
 func WordCount(in string) int {
 	lexer := zeus_lexer.NewLexer(in)
 	words := 0
+	inQuotedText := false
 
 	for {
 		token := lexer.NextToken()
@@ -12,7 +13,11 @@ func WordCount(in string) int {
 			break
 		}
 
-		if token.Type == zeus_lexer.Word {
+		if token.Type == zeus_lexer.Quotation {
+			inQuotedText = !inQuotedText
+		}
+
+		if token.Type == zeus_lexer.Word && !inQuotedText {
 			words++
 		}
 	}
