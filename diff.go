@@ -1,6 +1,7 @@
 package zeus
 
-func StringDifference(a, b string) string {
+// Returns the longest common subsequence between two given strings (a and b)
+func StringLongestCommonSubsequence(a, b string) string {
 	return longestCommonSubsequence(a, b)
 }
 
