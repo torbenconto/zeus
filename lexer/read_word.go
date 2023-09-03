@@ -1,6 +1,7 @@
 package zeus_lexer
 
 import (
+	"fmt"
 	"regexp"
 )
 
@@ -20,6 +21,7 @@ func (l *Lexer) readWord() Token {
 	}
 
 	word := l.Input[start:l.Position]
+	fmt.Println(string(word))
 
 	if abbreviationPattern.MatchString(word) {
 		return Token{
@@ -36,5 +38,5 @@ func (l *Lexer) readWord() Token {
 
 // Helper function to check if a character is a letter or a special character
 func isLetterOrSpecialChar(char byte) bool {
-	return (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char == '\'' || char == '-'
+	return (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char == '\'' || char == '-' || char == '.'
 }
