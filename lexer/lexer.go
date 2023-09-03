@@ -11,6 +11,7 @@ const (
 	LeftParenthesis  = iota
 	Symbol           = iota
 	ForwardSlash     = iota
+	Colon            = iota
 	Unknown          = iota
 )
 

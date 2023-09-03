@@ -52,5 +52,9 @@ func (l *Lexer) NextToken() Token {
 		return l.ReadForwardSlash()
 	}
 
+	if l.Input[l.Position] == ':' {
+		return l.ReadColon()
+	}
+
 	return l.ReadPunctuation()
 }
