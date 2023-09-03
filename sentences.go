@@ -4,7 +4,7 @@ import (
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
 )
 
-// Returns the amount of sentences in the given string (in)
+// Returns the amount of sentences in the given string (in) THIS IS VERY SHIT AND COUNTS UNKNOWN CHARACTERS AND ABBREVIATIONS AS SENTENCES
 func SentenceCount(in string) int {
 	lexer := zeus_lexer.NewLexer(in)
 	sentenceCount := 0
