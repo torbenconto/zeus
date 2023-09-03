@@ -23,7 +23,7 @@ func (l *Lexer) readWord() Token {
 		isAbbreviation = false
 	}
 
-	fmt.Println(word, isAbbreviation, isUppercase(word))
+	fmt.Println(word, isAbbreviation, unicode.IsUpper(rune(word[0])))
 
 	if isAbbreviation {
 		return Token{
