@@ -10,6 +10,7 @@ const (
 	RightParenthesis = iota
 	LeftParenthesis  = iota
 	Symbol           = iota
+	ForwardSlash     = iota
 	Unknown          = iota
 )
 

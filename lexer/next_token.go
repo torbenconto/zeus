@@ -42,5 +42,9 @@ func (l *Lexer) NextToken() Token {
 		return l.ReadSymbol()
 	}
 
+	if l.Input[l.Position] == '/' {
+		return l.ReadForwardSlash()
+	}
+
 	return l.ReadPunctuation()
 }
