@@ -56,5 +56,7 @@ func (l *Lexer) NextToken() Token {
 		return l.ReadColon()
 	}
 
+	// TODO: handle urls
+
 	return l.ReadPunctuation()
 }

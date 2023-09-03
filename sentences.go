@@ -1,6 +1,8 @@
 package zeus
 
 import (
+	"strings"
+
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
 )
 
@@ -14,7 +16,8 @@ func SentenceCount(in string) int {
 			break
 		}
 
-		if token.Type == zeus_lexer.Punctuation {
+		if token.Type == zeus_lexer.Punctuation &&
+			(strings.ContainsAny(token.Value, ".!?")) {
 			sentenceCount++
 		}
 	}
