@@ -14,6 +14,7 @@ func ReplaceProprietaryMicrosoftCharacters(s string) string {
 		"…": "...",  // Ellipsis
 		"—": "--",   // Em dash
 		"–": "-",    // En dash
+		"’": "'",    // weird quote
 	}
 
 	output := s
