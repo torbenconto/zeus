@@ -1,13 +1,18 @@
 package zeus
 
 import (
+	"strings"
+
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
 )
 
-// Returns the amount of sentences in the given string (in)
+// SentenceCount counts the total number of sentences in a text using the lexer,
+// considering abbreviations.
 func SentenceCount(in string) int {
 	lexer := zeus_lexer.NewLexer(in)
 	sentenceCount := 0
+	inQuotedText := false
+	lastToken := zeus_lexer.Token{Type: zeus_lexer.Unknown, Value: ""}
 
 	for {
 		token := lexer.NextToken()
@@ -15,9 +20,17 @@ func SentenceCount(in string) int {
 			break
 		}
 
-		if token.Type == zeus_lexer.Punctuation {
-			sentenceCount++
+		if token.Type == zeus_lexer.Quotation {
+			inQuotedText = !inQuotedText
 		}
+
+		if !inQuotedText && (strings.ContainsAny(token.Value, ".!?") && token.Type != zeus_lexer.Abbreviation) {
+			if lastToken.Type != zeus_lexer.Punctuation && lastToken.Type != zeus_lexer.Comma {
+				sentenceCount++
+			}
+		}
+
+		lastToken = token
 	}
 
 	return sentenceCount
