@@ -1,7 +1,6 @@
 package zeus_lexer
 
 import (
-	"fmt"
 	"unicode"
 )
 
@@ -10,8 +9,7 @@ func (l *Lexer) readWord() Token {
 	isAbbreviation := false
 
 	// Check if the word starts with a period
-	fmt.Println(string(l.Input[start:l.Position]))
-	if unicode.IsUpper(rune(l.Input[start:l.Position][0])) && l.Position < len(l.Input) && l.Input[l.Position] == '.' {
+	if l.Position < len(l.Input) && l.Input[l.Position] == '.' {
 		isAbbreviation = true
 		l.Position++
 	}
@@ -20,15 +18,26 @@ func (l *Lexer) readWord() Token {
 		l.Position++
 	}
 
-	if isAbbreviation {
+	word := l.Input[start:l.Position]
+
+	if isAbbreviation && isUppercase(word) {
 		return Token{
 			Type:  Abbreviation,
-			Value: l.Input[start:l.Position],
+			Value: word,
 		}
 	}
 
 	return Token{
 		Type:  Word,
-		Value: l.Input[start:l.Position],
+		Value: word,
 	}
+}
+
+func isUppercase(word string) bool {
+	for _, char := range word {
+		if !unicode.IsUpper(char) {
+			return false
+		}
+	}
+	return true
 }
