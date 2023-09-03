@@ -4,7 +4,7 @@ import (
 	"unicode"
 )
 
-func (l *Lexer) ReadWord() Token {
+func (l *Lexer) readWord() Token {
 
 	start := l.Position
 	for l.Position < len(l.Input) && unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' {

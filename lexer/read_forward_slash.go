@@ -1,6 +1,6 @@
 package zeus_lexer
 
-func (l *Lexer) ReadForwardSlash() Token {
+func (l *Lexer) readForwardSlash() Token {
 	start := l.Position
 	l.Position++
 

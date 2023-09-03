@@ -1,12 +1,12 @@
 package zeus_lexer
 
-func (l *Lexer) ReadLeftParenthesis() Token {
+func (l *Lexer) readLeftParenthesis() Token {
 	start := l.Position
 	l.Position++
 	return Token{Type: LeftParenthesis, Value: l.Input[start:l.Position]}
 }
 
-func (l *Lexer) ReadRightParenthesis() Token {
+func (l *Lexer) readRightParenthesis() Token {
 	start := l.Position
 	l.Position++
 	return Token{Type: RightParenthesis, Value: l.Input[start:l.Position]}

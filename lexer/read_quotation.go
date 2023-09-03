@@ -1,6 +1,6 @@
 package zeus_lexer
 
-func (l *Lexer) ReadQuotation() Token {
+func (l *Lexer) readQuotation() Token {
 	start := l.Position
 	l.Position++
 	/*

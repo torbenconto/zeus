@@ -2,7 +2,7 @@ package zeus_lexer
 
 import "unicode"
 
-func (l *Lexer) ReadApostrophe() Token {
+func (l *Lexer) readApostrophe() Token {
 	start := l.Position
 	l.Position++
 

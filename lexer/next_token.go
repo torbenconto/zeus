@@ -9,54 +9,54 @@ func (l *Lexer) NextToken() Token {
 	if len(l.Input) > 0 && l.Input[len(l.Input)-1] != ' ' {
 		l.Input += " "
 	}
-	l.SkipWhiteSpace()
+	l.skipWhiteSpace()
 
 	if l.Position >= len(l.Input) {
 		return Token{Type: Unknown, Value: ""}
 	}
 
 	if unicode.IsLetter(rune(l.Input[l.Position])) {
-		return l.ReadWord()
+		return l.readWord()
 	}
 
 	if l.Input[l.Position] == '"' {
-		return l.ReadQuotation()
+		return l.readQuotation()
 	}
 
 	//                                this is bad because "-" can also be used in lists but for now we ignore that bcs i am lazy
 	if l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' {
-		return l.ReadApostrophe()
+		return l.readApostrophe()
 	}
 
 	if l.Input[l.Position] == ',' {
-		return l.ReadComma()
+		return l.readComma()
 	}
 
 	if l.Input[l.Position] == '(' {
-		return l.ReadLeftParenthesis()
+		return l.readLeftParenthesis()
 	}
 
 	if l.Input[l.Position] == ')' {
-		return l.ReadRightParenthesis()
+		return l.readRightParenthesis()
 	}
 
 	if unicode.IsDigit(rune(l.Input[l.Position])) {
-		return l.ReadNumber()
+		return l.readNumber()
 	}
 
 	if unicode.IsSymbol(rune(l.Input[l.Position])) {
-		return l.ReadSymbol()
+		return l.readSymbol()
 	}
 
 	if l.Input[l.Position] == '/' {
-		return l.ReadForwardSlash()
+		return l.readForwardSlash()
 	}
 
 	if l.Input[l.Position] == ':' {
-		return l.ReadColon()
+		return l.readColon()
 	}
 
 	// TODO: handle urls and abbreviations
 
-	return l.ReadPunctuation()
+	return l.readPunctuation()
 }

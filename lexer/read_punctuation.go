@@ -1,6 +1,6 @@
 package zeus_lexer
 
-func (l *Lexer) ReadPunctuation() Token {
+func (l *Lexer) readPunctuation() Token {
 
 	start := l.Position
 	for l.Position < len(l.Input) && l.Input[l.Position] == l.Input[start] {
