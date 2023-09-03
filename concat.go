@@ -2,6 +2,7 @@ package zeus
 
 import "sync"
 
+// Better than Concat is most situations but worse than normal concatenation in all cases. Just for show pretty much.
 func NonConcurrentConcat(strings ...string) string {
 	out := ""
 
