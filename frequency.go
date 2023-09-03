@@ -1,14 +1,27 @@
 package zeus
 
 func FrequencyOfChar(char string, text string) int {
-	count := 0
+	frequency := 0
 	charRune := []rune(char)
 
 	for _, c := range text {
 		if c == charRune[0] {
-			count++
+			frequency++
 		}
 	}
 
-	return count
+	return frequency
+}
+
+func FrequencyOfWord(word string, text string) int {
+	frequency := 0
+	words := GetAllWords(text)
+
+	for _, w := range words {
+		if w == word {
+			frequency++
+		}
+	}
+
+	return frequency
 }

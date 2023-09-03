@@ -31,3 +31,23 @@ func TestFrequencyOfChar(t *testing.T) {
 		t.Errorf(`FrequencyOfChar("A", "apple") = %d; want 0`, result)
 	}
 }
+
+func TestFrequencyOfWord(t *testing.T) {
+	tests := []struct {
+		word     string
+		text     string
+		expected int
+	}{
+		{"banana", "banana apple banana orange banana", 3},
+		{"apple", "banana apple banana orange banana", 1},
+		{"pear", "banana apple banana orange banana", 0},
+		{"", "empty text", 0},
+	}
+
+	for _, test := range tests {
+		actual := zeus.FrequencyOfWord(test.word, test.text)
+		if actual != test.expected {
+			t.Errorf("FrequencyOfWord(%s, %s) = %d; expected %d", test.word, test.text, actual, test.expected)
+		}
+	}
+}
