@@ -16,9 +16,7 @@ func SentenceCount(in string) int {
 			break
 		}
 
-		if token.Type == zeus_lexer.Punctuation {
-			fmt.Println(token)
-		}
+		fmt.Println(token)
 
 		if token.Type == zeus_lexer.Punctuation {
 			sentenceCount++
