@@ -9,7 +9,7 @@ func (l *Lexer) readWord() Token {
 	start := l.Position
 	isAbbreviation := false
 
-	for l.Position < len(l.Input) && (unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-') {
+	for l.Position < len(l.Input) && (unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' || l.Input[l.Position] == '.') {
 		l.Position++
 	}
 
