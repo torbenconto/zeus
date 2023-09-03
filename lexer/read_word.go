@@ -18,11 +18,12 @@ func (l *Lexer) readWord() Token {
 	}
 
 	word := l.Input[start:l.Position]
-	fmt.Println(word, isAbbreviation, isUppercase(word))
 
 	if !isUppercase(word) {
 		isAbbreviation = false
 	}
+
+	fmt.Println(word, isAbbreviation, isUppercase(word))
 
 	if isAbbreviation {
 		return Token{
