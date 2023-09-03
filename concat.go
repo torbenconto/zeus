@@ -10,24 +10,31 @@ func NonConcurrentConcat(strings ...string) string {
 	}
 	return out
 }
-
 func Concat(strings ...string) string {
 	var (
 		out   string
 		mutex sync.Mutex
+		wg    sync.WaitGroup
 	)
 
+	ch := make(chan string, len(strings))
+
 	for _, s := range strings {
-		s := s
-		go func() {
-			mutex.Lock()
-			out += s
-			mutex.Unlock()
-		}()
+		wg.Add(1)
+		go func(s string) {
+			defer wg.Done()
+			ch <- s
+		}(s)
 	}
 
-	for range strings {
+	go func() {
+		wg.Wait()
+		close(ch)
+	}()
+
+	for s := range ch {
 		mutex.Lock()
+		out += s
 		mutex.Unlock()
 	}
 
