@@ -12,6 +12,7 @@ const (
 	Symbol           = iota
 	ForwardSlash     = iota
 	Colon            = iota
+	Abbreviation     = iota
 	Unknown          = iota
 )
 
