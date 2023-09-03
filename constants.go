@@ -11,7 +11,6 @@ var ProblemWords = map[string]int{
 
 var (
 	consonantsRegexp = regexp.MustCompile("[^aeiouy]+")
-	pluralRegexp     = regexp.MustCompile("([a-zA-Z]+?)(s\\b|\\b)")
 )
 
 var SubSyllables = [...]*regexp.Regexp{
