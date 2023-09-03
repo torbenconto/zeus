@@ -10,21 +10,21 @@ func (l *Lexer) readWord() Token {
 	isAbbreviation := false
 
 	for l.Position < len(l.Input) && (unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' || l.Input[l.Position] == '.') {
-		if l.Input[l.Position] == '.' {
-			isAbbreviation = true
-		}
+		fmt.Println(string(l.Input[l.Position]))
 		l.Position++
+	}
+
+	if l.Position < len(l.Input) && l.Input[l.Position-1] == '.' {
+		isAbbreviation = true
 	}
 
 	word := l.Input[start:l.Position]
 
-	// Check if the last character is a period and remove it from the word
-	if isAbbreviation && len(word) > 0 && word[len(word)-1] == '.' {
-		word = word[:len(word)-1]
+	if !unicode.IsUpper(rune(word[0])) {
+		isAbbreviation = false
 	}
 
 	if isAbbreviation {
-		fmt.Println(word, isAbbreviation, unicode.IsUpper(rune(word[0])))
 		return Token{
 			Type:  Abbreviation,
 			Value: word,
