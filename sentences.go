@@ -23,6 +23,7 @@ func SentenceCount(in string) int {
 	return sentenceCount
 }
 
+// Returns the number of words in the given string (in) over the number of sentences in the given string (in). If the number of sentences in the given string is 0, the number of words is returned.
 func AverageWordsPerSentence(in string) float64 {
 
 	sentences := SentenceCount(in)

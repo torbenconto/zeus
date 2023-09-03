@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+// Returns the amount of syllables in the given word.
 func SyllableCount(word string) (count int) {
 	word = strings.ToLower(word)
 
@@ -44,6 +45,7 @@ func SyllableCount(word string) (count int) {
 	return
 }
 
+// Iterates over every word in the given string (in) and returns the amount of syllables in each word added up.
 func TotalSyllableCount(in string) int {
 	words := GetAllWords(in)
 	syllables := 0
@@ -55,6 +57,7 @@ func TotalSyllableCount(in string) int {
 	return syllables
 }
 
+// Returns the amount of syllables in the given string (in) over the amount of words in the given string (in)
 func AverageSyllablesPerWord(in string) float64 {
 	return float64(TotalSyllableCount(in)) / float64(WordCount(in))
 }

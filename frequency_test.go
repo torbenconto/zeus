@@ -7,28 +7,28 @@ import (
 )
 
 func TestFrequencyOfChar(t *testing.T) {
-	// Test case 1: Single character "a" appears once in "apple"
-	result := zeus.FrequencyOfChar("a", "apple")
+	// Test case 1: Single Runeacter "a" appears once in "apple"
+	result := zeus.FrequencyOfRune('a', "apple")
 	if result != 1 {
-		t.Errorf(`FrequencyOfChar("a", "apple") = %d; want 1`, result)
+		t.Errorf(`FrequencyOfRune("a", "apple") = %d; want 1`, result)
 	}
 
-	// Test case 2: Single character "z" appears zero times in "apple"
-	result = zeus.FrequencyOfChar("z", "apple")
+	// Test case 2: Single Runeacter "z" appears zero times in "apple"
+	result = zeus.FrequencyOfRune('z', "apple")
 	if result != 0 {
-		t.Errorf(`FrequencyOfChar("z", "apple") = %d; want 0`, result)
+		t.Errorf(`FrequencyOfRune('z', "apple") = %d; want 0`, result)
 	}
 
-	// Test case 3: Single character "l" appears three times in "hello"
-	result = zeus.FrequencyOfChar("l", "hello")
+	// Test case 3: Single Runeacter "l" appears three times in "hello"
+	result = zeus.FrequencyOfRune('l', "hello")
 	if result != 2 {
-		t.Errorf(`FrequencyOfChar("l", "hello") = %d; want 2`, result)
+		t.Errorf(`FrequencyOfRune('l', "hello") = %d; want 2`, result)
 	}
 
-	// Test case 4: Single character "A" (uppercase) appears zero times in "apple"
-	result = zeus.FrequencyOfChar("A", "apple")
+	// Test case 4: Single Runeacter "A" (uppercase) appears zero times in "apple"
+	result = zeus.FrequencyOfRune('A', "apple")
 	if result != 0 {
-		t.Errorf(`FrequencyOfChar("A", "apple") = %d; want 0`, result)
+		t.Errorf(`FrequencyOfRune('A', "apple") = %d; want 0`, result)
 	}
 }
 

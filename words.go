@@ -2,6 +2,7 @@ package zeus
 
 import zeus_lexer "github.com/torbenconto/zeus/lexer"
 
+// Returns the amount of words in a given string (in)
 func WordCount(in string) int {
 	lexer := zeus_lexer.NewLexer(in)
 	words := 0
@@ -20,8 +21,9 @@ func WordCount(in string) int {
 	return words
 }
 
-func GetAllWords(input string) []string {
-	lexer := zeus_lexer.NewLexer(input)
+// Returns a list of all words in a given string
+func GetAllWords(in string) []string {
+	lexer := zeus_lexer.NewLexer(in)
 	words := []string{}
 
 	for {
