@@ -6,9 +6,8 @@ import (
 )
 
 func (l *Lexer) readWord() Token {
-
 	start := l.Position
-	for l.Position < len(l.Input) && unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' || l.Input[l.Position] == '.' {
+	for l.Position < len(l.Input) && (unicode.IsLetter(rune(l.Input[l.Position])) || l.Input[l.Position] == '\'' || l.Input[l.Position] == '-' || l.Input[l.Position] == '.' || unicode.IsDigit(rune(l.Input[l.Position])) || l.Input[l.Position] == '_') {
 		l.Position++
 	}
 
