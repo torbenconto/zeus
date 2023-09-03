@@ -1,8 +1,8 @@
-package main
+package zeus
 
 import "strings"
 
-func Sanitize(s string) string {
+func SanitizeAll(s string) string {
 	return ReplaceProprietaryMicrosoftCharacters(s)
 }
 
