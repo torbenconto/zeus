@@ -12,7 +12,8 @@ func (l *Lexer) readWord() Token {
 	}
 
 	value := l.Input[start:l.Position]
-	if strings.HasSuffix(value, ".") && len(value) > 1 && strings.ToUpper(value) != value {
+
+	if strings.Contains(value, ".") && !strings.HasPrefix(value, ".") && !strings.HasSuffix(value, ".") {
 		return Token{Type: Abbreviation, Value: value}
 	}
 
