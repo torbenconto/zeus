@@ -19,7 +19,7 @@ func (l *Lexer) readWord() Token {
 
 	word := l.Input[start:l.Position]
 
-	if !isUppercase(word) {
+	if !unicode.IsUpper(rune(word[0])) {
 		isAbbreviation = false
 	}
 
@@ -36,13 +36,4 @@ func (l *Lexer) readWord() Token {
 		Type:  Word,
 		Value: word,
 	}
-}
-
-func isUppercase(word string) bool {
-	for _, char := range word {
-		if !unicode.IsUpper(char) {
-			return false
-		}
-	}
-	return true
 }
