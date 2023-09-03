@@ -2,7 +2,7 @@ package zeus
 
 import "regexp"
 
-var ProblemWords = map[string]int{
+var problemWords = map[string]int{
 	"simile":    3,
 	"forever":   3,
 	"shoreline": 2,
@@ -13,7 +13,7 @@ var (
 	consonantsRegexp = regexp.MustCompile("[^aeiouy]+")
 )
 
-var SubSyllables = [...]*regexp.Regexp{
+var subSyllables = [...]*regexp.Regexp{
 	regexp.MustCompile("cial"),
 	regexp.MustCompile("tia"),
 	regexp.MustCompile("cius"),
@@ -34,7 +34,7 @@ var SubSyllables = [...]*regexp.Regexp{
 }
 
 // AddSyllables are syllables that would be counted as one but should be two
-var AddSyllables = [...]*regexp.Regexp{
+var addSyllables = [...]*regexp.Regexp{
 	regexp.MustCompile("ia"),
 	regexp.MustCompile("riet"),
 	regexp.MustCompile("dien"),
@@ -56,7 +56,7 @@ var AddSyllables = [...]*regexp.Regexp{
 }
 
 // PrefixSuffixes are single syllable prefixes and suffixes
-var PrefixSuffixes = [...]*regexp.Regexp{
+var prefixSuffixes = [...]*regexp.Regexp{
 	regexp.MustCompile("^un"),
 	regexp.MustCompile("^fore"),
 	regexp.MustCompile("ly$"),

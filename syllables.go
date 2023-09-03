@@ -8,13 +8,13 @@ import (
 func SyllableCount(word string) (count int) {
 	word = strings.ToLower(word)
 
-	count, ok := ProblemWords[word]
+	count, ok := problemWords[word]
 	if ok {
 		return
 	}
 
 	var prefixSuffixCount int
-	for _, regex := range PrefixSuffixes[:] {
+	for _, regex := range prefixSuffixes[:] {
 		if regex.MatchString(word) {
 			word = regex.ReplaceAllString(word, "")
 			prefixSuffixCount++
@@ -30,13 +30,13 @@ func SyllableCount(word string) (count int) {
 
 	count = wordPartCount + prefixSuffixCount
 
-	for _, regex := range SubSyllables[:] {
+	for _, regex := range subSyllables[:] {
 		if regex.MatchString(word) {
 			count--
 		}
 	}
 
-	for _, regex := range AddSyllables[:] {
+	for _, regex := range addSyllables[:] {
 		if regex.MatchString(word) {
 			count++
 		}
