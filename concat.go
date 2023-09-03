@@ -10,6 +10,8 @@ func NonConcurrentConcat(strings ...string) string {
 	}
 	return out
 }
+
+// Concatenates multiple strings together using goroutines. Using this as opposed to a normal concatenation is less efficient with small concatenations but works very well with large concatenations.
 func Concat(strings ...string) string {
 	var (
 		out   string
