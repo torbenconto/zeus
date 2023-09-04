@@ -11,6 +11,7 @@ func RemoveExtraWhitespace(in string) string {
 	lexer := zeus_lexer.NewLexer(in)
 	var result strings.Builder
 	lastToken := zeus_lexer.Token{Type: zeus_lexer.Unknown, Value: ""}
+	firstToken := true
 
 	for {
 		token := lexer.NextToken()
@@ -18,14 +19,15 @@ func RemoveExtraWhitespace(in string) string {
 			break
 		}
 
-		// Only add a space if the current token is a Word and the previous token was not punctuation.
-		if token.Type == zeus_lexer.Word && lastToken.Type != zeus_lexer.Punctuation {
+		// Only add a space if it's not the first token and the current token is a Word and the previous token was not punctuation.
+		if !firstToken && token.Type == zeus_lexer.Word && lastToken.Type != zeus_lexer.Punctuation {
 			result.WriteRune(' ')
 		}
 
 		result.WriteString(token.Value)
 
 		lastToken = token
+		firstToken = false
 	}
 
 	return result.String()
