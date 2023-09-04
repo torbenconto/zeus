@@ -1,6 +1,35 @@
 package zeus
 
-import zeus_lexer "github.com/torbenconto/zeus/lexer"
+import (
+	"strings"
+
+	zeus_lexer "github.com/torbenconto/zeus/lexer"
+)
+
+// RemoveExtraWhitespace removes extra whitespace between words using the lexer.
+func RemoveExtraWhitespace(in string) string {
+	lexer := zeus_lexer.NewLexer(in)
+	var result strings.Builder
+	lastToken := zeus_lexer.Token{Type: zeus_lexer.Unknown, Value: ""}
+
+	for {
+		token := lexer.NextToken()
+		if token.Type == zeus_lexer.Unknown {
+			break
+		}
+
+		// Only add a space if the current token is a Word and the previous token was not punctuation.
+		if token.Type == zeus_lexer.Word && lastToken.Type != zeus_lexer.Punctuation {
+			result.WriteRune(' ')
+		}
+
+		result.WriteString(token.Value)
+
+		lastToken = token
+	}
+
+	return result.String()
+}
 
 // Returns the amount of words in a given string (in)
 func WordCount(in string) int {
