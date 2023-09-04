@@ -28,7 +28,7 @@ func RemoveExtraWhitespace(in string) string {
 		lastToken = token
 	}
 
-	return result.String()
+	return result.String()[1:]
 }
 
 // Returns the amount of words in a given string (in)
