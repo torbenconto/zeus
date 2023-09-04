@@ -12,7 +12,7 @@ func GetAllHTMLTags(in string) []string {
 
 	for {
 		token := lexer.NextToken()
-		fmt.Println(token.Type)
+		fmt.Println(token.Type == zeus_lexer.HTMLTagOpen || token.Type == zeus_lexer.HTMLTagClose)
 		if token.Type == zeus_lexer.Unknown {
 			break
 		}
