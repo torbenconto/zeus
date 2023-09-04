@@ -19,6 +19,10 @@ func (l *Lexer) NextToken() Token {
 		return l.readWord()
 	}
 
+	if l.Input[l.Position] == '<' {
+		return l.readHTMLTag()
+	}
+
 	if l.Input[l.Position] == '"' {
 		return l.readQuotation()
 	}
@@ -54,10 +58,6 @@ func (l *Lexer) NextToken() Token {
 
 	if l.Input[l.Position] == ':' {
 		return l.readColon()
-	}
-
-	if l.Input[l.Position] == '<' {
-		return l.readHTMLTag()
 	}
 
 	// TODO: handle urls and abbreviations
