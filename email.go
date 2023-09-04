@@ -1,6 +1,9 @@
 package zeus
 
-import "regexp"
+import (
+	"regexp"
+	"strings"
+)
 
 // Uses regex to extract a given amount of emails (max) from a given string (in). Use a max value of -1 or less to return all emails
 func ExtractEmails(in string, max int) []string {
@@ -12,4 +15,15 @@ func ExtractEmails(in string, max int) []string {
 	}
 
 	return emails
+}
+
+// Replace given amount of emails (max) from given string (in) with a given string (replacer). Calls ExtractEmails(in, max) and then replaces the emails inside the result.
+func ReplaceEmails(in string, replacer string, max int) string {
+	emails := ExtractEmails(in, max)
+
+	for _, email := range emails {
+		in = strings.Replace(in, email, replacer, -1)
+	}
+
+	return in
 }
