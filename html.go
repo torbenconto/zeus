@@ -1,6 +1,10 @@
 package zeus
 
-import zeus_lexer "github.com/torbenconto/zeus/lexer"
+import (
+	"fmt"
+
+	zeus_lexer "github.com/torbenconto/zeus/lexer"
+)
 
 func GetAllHTMLTags(in string) []string {
 	lexer := zeus_lexer.NewLexer(in)
@@ -8,6 +12,7 @@ func GetAllHTMLTags(in string) []string {
 
 	for {
 		token := lexer.NextToken()
+		fmt.Println(token.Type)
 		if token.Type == zeus_lexer.Unknown {
 			break
 		}
