@@ -20,7 +20,7 @@ func RemoveExtraWhitespace(in string) string {
 
 		// Only add a space if the current token is a Word and the previous token was not punctuation.
 		if token.Type == zeus_lexer.Word && lastToken.Type != zeus_lexer.Punctuation {
-			result.WriteRune('x')
+			result.WriteRune(' ')
 		}
 
 		result.WriteString(token.Value)
@@ -28,7 +28,7 @@ func RemoveExtraWhitespace(in string) string {
 		lastToken = token
 	}
 
-	return result.String()
+	return result.String()[1:len(result.String())]
 }
 
 // Returns the amount of words in a given string (in)
