@@ -8,6 +8,7 @@ func SanitizeAll(in string) string {
 	in = ReplaceEmails(in, "", -1)
 	in = ReplaceUrls(in, "", -1)
 	in = ReplaceCommonHTMLCharacters(in)
+	in = RemoveExtraWhitespace(in)
 	return in
 }
 
