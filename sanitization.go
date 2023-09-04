@@ -7,11 +7,12 @@ func SanitizeAll(in string) string {
 	in = ReplaceProprietaryMicrosoftCharacters(in)
 	in = ReplaceEmails(in, "", -1)
 	in = ReplaceUrls(in, "", -1)
+	in = ReplaceCommonHTMLCharacters(in)
 	return in
 }
 
 // Replaces commonly used (bad) microsoft and google ascii characters with normal characters.
-func ReplaceProprietaryMicrosoftCharacters(s string) string {
+func ReplaceProprietaryMicrosoftCharacters(in string) string {
 	replacements := map[string]string{
 		"“": "\"",   // Smart quote (left)
 		"”": "\"",   // Smart quote (right)
@@ -22,9 +23,27 @@ func ReplaceProprietaryMicrosoftCharacters(s string) string {
 		"’": "'",    // weird quote
 	}
 
-	output := s
+	output := in
 	for microsoftChar, standardChar := range replacements {
 		output = strings.ReplaceAll(output, microsoftChar, standardChar)
+	}
+
+	return output
+}
+
+func ReplaceCommonHTMLCharacters(in string) string {
+	replacements := map[string]string{
+		"&lt;":   "<",   // Less than sign
+		"&gt;":   ">",   // Greater than sign
+		"&amp;":  "&",   // Ampersand
+		"&copy;": "(c)", // Copyright symbol
+		"&reg;":  "(R)", // Registered trademark symbol
+		"&nbsp;": " ",   // Non-breaking space
+	}
+
+	output := in
+	for char, replacement := range replacements {
+		output = strings.ReplaceAll(output, char, replacement)
 	}
 
 	return output
