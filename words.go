@@ -1,6 +1,7 @@
 package zeus
 
 import (
+	"fmt"
 	"strings"
 
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
@@ -28,9 +29,7 @@ func RemoveExtraWhitespace(in string) string {
 		lastToken = token
 	}
 
-	if result.Len() > 0 {
-		return result.String()[1:]
-	}
+	fmt.Println(result.String())
 
 	return result.String()
 }
