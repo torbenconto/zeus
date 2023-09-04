@@ -28,6 +28,10 @@ func RemoveExtraWhitespace(in string) string {
 		lastToken = token
 	}
 
+	if result.Len() > 0 {
+		return result.String()[1:]
+	}
+
 	return result.String()
 }
 
