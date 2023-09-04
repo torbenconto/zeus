@@ -1,7 +1,6 @@
 package zeus
 
 import (
-	"fmt"
 	"strings"
 
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
@@ -14,7 +13,6 @@ func ExtractHTMLTags(in string, max int) []string {
 
 	for {
 		token := lexer.NextToken()
-		fmt.Println(token.Type == zeus_lexer.HTMLTagOpen || token.Type == zeus_lexer.HTMLTagClose)
 		if token.Type == zeus_lexer.Unknown {
 			break
 		}
