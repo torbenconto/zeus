@@ -13,6 +13,8 @@ const (
 	ForwardSlash     = iota
 	Colon            = iota
 	Abbreviation     = iota
+	HTMLTagOpen      = iota
+	HTMLTagClose     = iota
 	Unknown          = iota
 )
 
