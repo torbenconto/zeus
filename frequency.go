@@ -53,7 +53,7 @@ func PercentFrequencyOfString(str string, in string) float64 {
 		}
 	}
 
-	fmt.Println(frequency, len(words), frequency/(len(words)-frequency))
+	fmt.Println(frequency, len(words), (len(words) - frequency))
 
 	return float64(frequency / (len(words) - frequency))
 }
