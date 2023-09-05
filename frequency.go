@@ -14,6 +14,7 @@ func FrequencyOfRune(char rune, in string) int {
 	return frequency
 }
 
+// PercentFrequencyOfRune calculates the percentage frequency of a specific rune (char) within a string (in).
 func PercentFrequencyOfRune(char rune, in string) float64 {
 	frequency := 0
 	charRune := char
@@ -41,6 +42,7 @@ func FrequencyOfString(str string, in string) int {
 	return frequency
 }
 
+// PercentFrequencyOfString calculates the percentage frequency of a specific string (str) within another string (in).
 func PercentFrequencyOfString(str string, in string) float64 {
 	frequency := 0
 	words := GetAllWords(in)
