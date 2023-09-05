@@ -93,7 +93,8 @@ func preProcess(text string) string {
 
 func getSentWeight(sent string, wordWeights map[string]int) int {
 	weight := 0
-	biggest := 0
+	biggest := 1 // Initialize to a non-zero value to avoid division by zero
+
 	for _, word := range strings.Split(sent, " ") {
 		w, ok := wordWeights[word]
 		if ok {
@@ -103,6 +104,11 @@ func getSentWeight(sent string, wordWeights map[string]int) int {
 			}
 		}
 	}
+
+	if biggest == 0 {
+		return 0 // Handle the case where there are no valid words in the sentence.
+	}
+
 	return weight / biggest
 }
 
