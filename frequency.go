@@ -1,5 +1,7 @@
 package zeus
 
+import "fmt"
+
 // Returns the number of times a given rune (char) appears in another given string (text)
 func FrequencyOfRune(char rune, in string) int {
 	frequency := 0
@@ -50,6 +52,8 @@ func PercentFrequencyOfString(str string, in string) float64 {
 			frequency++
 		}
 	}
+
+	fmt.Println(frequency, len(words))
 
 	return float64(frequency / (len(words) - frequency))
 }
