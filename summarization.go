@@ -12,7 +12,7 @@ type word struct {
 }
 
 // SummarizeText summarizes a given text.
-func SummarizeText(text string, noOfLines int) string {
+func summarizeText(text string, noOfLines int) string {
 
 	lexer := zeus_lexer.NewLexer(text)
 
