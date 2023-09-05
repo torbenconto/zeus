@@ -4,7 +4,14 @@ import (
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
 )
 
-// Returns the amount of sentences in the given string (in) THIS IS VERY SHIT AND COUNTS UNKNOWN CHARACTERS AND ABBREVIATIONS AS SENTENCES
+// SentenceCount returns the number of sentences in the given string (in).
+// Note that this function may count unknown characters and abbreviations as sentences, which may not be accurate.
+//
+// Parameters:
+//   - in: The input string for which to count sentences.
+//
+// Returns:
+//   - The number of sentences in the input string.
 func SentenceCount(in string) int {
 	lexer := zeus_lexer.NewLexer(in)
 	sentenceCount := 0
@@ -23,9 +30,15 @@ func SentenceCount(in string) int {
 	return sentenceCount
 }
 
-// Returns the number of words in the given string (in) over the number of sentences in the given string (in). If the number of sentences in the given string is 0, the number of words is returned.
+// AverageWordsPerSentence calculates the average number of words per sentence in the given string (in).
+// If the number of sentences in the given string is 0, it returns the number of words as a float64.
+//
+// Parameters:
+//   - in: The input string for which to calculate the average words per sentence.
+//
+// Returns:
+//   - The average words per sentence as a float64.
 func AverageWordsPerSentence(in string) float64 {
-
 	sentences := SentenceCount(in)
 	words := WordCount(in)
 

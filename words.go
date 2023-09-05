@@ -6,7 +6,13 @@ import (
 	zeus_lexer "github.com/torbenconto/zeus/lexer"
 )
 
-// RemoveExtraWhitespace removes extra whitespace between words using the lexer.
+// RemoveExtraWhitespace removes extra whitespace between words in the given string (in) using the lexer.
+//
+// Parameters:
+//   - in: The input string from which to remove extra whitespace.
+//
+// Returns:
+//   - The input string with extra whitespace removed.
 func RemoveExtraWhitespace(in string) string {
 	lexer := zeus_lexer.NewLexer(in)
 	var result strings.Builder
@@ -31,7 +37,13 @@ func RemoveExtraWhitespace(in string) string {
 	return result.String()[1:]
 }
 
-// Returns the amount of words in a given string (in)
+// WordCount returns the number of words in the given string (in).
+//
+// Parameters:
+//   - in: The input string for which to count words.
+//
+// Returns:
+//   - The number of words in the input string.
 func WordCount(in string) int {
 	lexer := zeus_lexer.NewLexer(in)
 	words := 0
@@ -50,7 +62,13 @@ func WordCount(in string) int {
 	return words
 }
 
-// Returns a list of all words in a given string
+// GetAllWords returns a list of all words in the given string.
+//
+// Parameters:
+//   - in: The input string from which to extract words.
+//
+// Returns:
+//   - A slice of strings containing all the words in the input string.
 func GetAllWords(in string) []string {
 	lexer := zeus_lexer.NewLexer(in)
 	words := []string{}

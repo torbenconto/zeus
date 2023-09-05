@@ -2,17 +2,32 @@ package zeus
 
 import "sync"
 
-// Better than Concat is most situations but worse than normal concatenation in all cases. Just for show pretty much.
+// NonConcurrentConcat concatenates multiple strings together without concurrency.
+// This function is usually less efficient for small concatenations but works well for large concatenations.
+//
+// Parameters:
+//   - strings: A variadic list of strings to concatenate.
+//
+// Returns:
+//   - The concatenated string.
 func NonConcurrentConcat(strings ...string) string {
 	out := ""
 
 	for _, s := range strings {
 		out += s
 	}
+
 	return out
 }
 
-// Concatenates multiple strings together using goroutines. Using this as opposed to a normal concatenation is less efficient with small concatenations but works very well with large concatenations.
+// Concat concatenates multiple strings together using goroutines and a mutex for synchronization.
+// It is more efficient for large concatenations compared to NonConcurrentConcat.
+//
+// Parameters:
+//   - strings: A variadic list of strings to concatenate.
+//
+// Returns:
+//   - The concatenated string.
 func Concat(strings ...string) string {
 	var (
 		out   string

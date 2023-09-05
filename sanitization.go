@@ -2,7 +2,14 @@ package zeus
 
 import "strings"
 
-// Runs all sanitization functions on a given string (in). Note that not sanatizing text may result in unexpected results.
+// SanitizeAll runs all sanitization functions on a given string (in).
+// It performs multiple text sanitization operations to clean and normalize the input string.
+//
+// Parameters:
+//   - in: The input string to sanitize.
+//
+// Returns:
+//   - The sanitized string.
 func SanitizeAll(in string) string {
 	in = ReplaceProprietaryMicrosoftCharacters(in)
 	in = ReplaceEmails(in, "", -1)
@@ -12,7 +19,13 @@ func SanitizeAll(in string) string {
 	return in
 }
 
-// Replaces commonly used (bad) microsoft and google ascii characters with normal characters.
+// ReplaceProprietaryMicrosoftCharacters replaces commonly used (bad) Microsoft and Google ASCII characters with normal characters.
+//
+// Parameters:
+//   - in: The input string to perform replacements on.
+//
+// Returns:
+//   - The input string with proprietary Microsoft characters replaced.
 func ReplaceProprietaryMicrosoftCharacters(in string) string {
 	replacements := map[string]string{
 		"“": "\"",   // Smart quote (left)
@@ -21,7 +34,7 @@ func ReplaceProprietaryMicrosoftCharacters(in string) string {
 		"…": "...",  // Ellipsis
 		"—": "--",   // Em dash
 		"–": "-",    // En dash
-		"’": "'",    // weird quote
+		"’": "'",    // Weird quote
 	}
 
 	output := in
@@ -32,6 +45,13 @@ func ReplaceProprietaryMicrosoftCharacters(in string) string {
 	return output
 }
 
+// ReplaceCommonHTMLCharacters replaces commonly used HTML entities with their corresponding characters.
+//
+// Parameters:
+//   - in: The input string to perform replacements on.
+//
+// Returns:
+//   - The input string with common HTML characters replaced.
 func ReplaceCommonHTMLCharacters(in string) string {
 	replacements := map[string]string{
 		"&lt;":   "<",   // Less than sign

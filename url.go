@@ -5,7 +5,15 @@ import (
 	"strings"
 )
 
-// Extracts a given number of urls from the given string (in) using regex. Returns a list of urls with a max length of (max). Use a max value of -1 or less to return every url
+// ExtractUrls extracts a given number of URLs from the given string (in) using regular expressions.
+// It returns a list of URLs with a maximum length of (max). Use a max value of -1 or less to return every URL found in the input string.
+//
+// Parameters:
+//   - in: The input string from which to extract URLs.
+//   - max: The maximum number of URLs to extract. Use -1 to extract all URLs.
+//
+// Returns:
+//   - A slice of strings containing the extracted URLs.
 func ExtractUrls(in string, max int) []string {
 	regex := regexp.MustCompile(`https?://[^\s]+`)
 
@@ -18,7 +26,16 @@ func ExtractUrls(in string, max int) []string {
 	return urls
 }
 
-// Replace given amount of urls (max) from given string (in) with a given string (replacer). Calls ExtractUrls(in, max) and then replaces the urls inside the result.
+// ReplaceUrls replaces a given number of URLs (max) from the given string (in) with a given string (replacer).
+// This function first calls ExtractUrls(in, max) to extract the URLs and then replaces them inside the input string with the provided replacer.
+//
+// Parameters:
+//   - in: The input string in which to replace URLs.
+//   - replacer: The string to replace URLs with.
+//   - max: The maximum number of URLs to replace. Use -1 to replace all URLs.
+//
+// Returns:
+//   - The input string with the specified URLs replaced by the replacer string.
 func ReplaceUrls(in string, replacer string, max int) string {
 	urls := ExtractUrls(in, max)
 
