@@ -45,7 +45,7 @@ func TestFrequencyOfWord(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := zeus.FrequencyOfWord(test.word, test.text)
+		actual := zeus.FrequencyOfString(test.word, test.text)
 		if actual != test.expected {
 			t.Errorf("FrequencyOfWord(%s, %s) = %d; expected %d", test.word, test.text, actual, test.expected)
 		}
