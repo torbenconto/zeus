@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const EmailRegex = `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b`
+
 // ExtractEmails uses regular expressions to extract a given amount of emails (max) from a given string (in).
 // Use a max value of -1 or less to return all emails found in the input string.
 //
@@ -15,7 +17,7 @@ import (
 // Returns:
 //   - A slice of strings containing the extracted emails.
 func ExtractEmails(in string, max int) []string {
-	regex := regexp.MustCompile(`\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b`)
+	regex := regexp.MustCompile(EmailRegex)
 	emails := regex.FindAllString(in, -1)
 
 	if max >= 0 && max < len(emails) {
@@ -23,6 +25,13 @@ func ExtractEmails(in string, max int) []string {
 	}
 
 	return emails
+}
+
+// Returns a bool checking if the given text matches a comprehensive email regex
+func IsEmail(in string) bool {
+	regex := regexp.MustCompile(EmailRegex)
+
+	return regex.MatchString(in)
 }
 
 // ReplaceEmails replaces a given amount of emails (max) from a given string (in) with a given string (replacer).

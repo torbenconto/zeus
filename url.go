@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const UrlRegex = `https?://[^\s]+`
+
 // ExtractUrls extracts a given number of URLs from the given string (in) using regular expressions.
 // It returns a list of URLs with a maximum length of (max). Use a max value of -1 or less to return every URL found in the input string.
 //
@@ -15,7 +17,7 @@ import (
 // Returns:
 //   - A slice of strings containing the extracted URLs.
 func ExtractUrls(in string, max int) []string {
-	regex := regexp.MustCompile(`https?://[^\s]+`)
+	regex := regexp.MustCompile(UrlRegex)
 
 	urls := regex.FindAllString(in, -1)
 
@@ -28,7 +30,7 @@ func ExtractUrls(in string, max int) []string {
 
 // Returns a bool checking if the given text matches a url regex
 func IsUrl(in string) bool {
-	regex := regexp.MustCompile(`https?://[^\s]+`)
+	regex := regexp.MustCompile(UrlRegex)
 
 	return regex.MatchString(in)
 }
