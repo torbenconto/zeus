@@ -26,6 +26,13 @@ func ExtractUrls(in string, max int) []string {
 	return urls
 }
 
+// Returns a bool checking if the given text matches a url regex
+func IsUrl(in string) bool {
+	regex := regexp.MustCompile(`https?://[^\s]+`)
+
+	return regex.MatchString(in)
+}
+
 // ReplaceUrls replaces a given number of URLs (max) from the given string (in) with a given string (replacer).
 // This function first calls ExtractUrls(in, max) to extract the URLs and then replaces them inside the input string with the provided replacer.
 //
